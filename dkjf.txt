@@ -1,0 +1,6 @@
+i = width
+j= height
+
+r,g,b
+
+gray
