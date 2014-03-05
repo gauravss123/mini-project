@@ -1,13 +1,13 @@
-I = imread('/media/gaurav/LocAL/SAMPLE/luna.jpg');
-%imshow(I);
+I = imread('/media/gaurav/LocAL/SAMPLE/lena.jpg');
+
 
 G= (.222*I(:,:,1))+(.707*I(:,:,2))+(.071*I(:,:,3)); %convert to grayscale, adjust to human eye sensitivity
-%figure;
-%imshow(G);
+
+imshow(G);
 
 g=G(:)'; %convert 2d grayscale matrix to 1d
-y = zeros(1,256); %1d array to store values of histogram
-w = zeros(1,256); %1d array to store values of normalised histogram
+%y;% = zeros(1,256); %1d array to store values of histogram
+%w;% = zeros(1,256); %1d array to store values of normalised histogram
 
 t=size(G); % returns dimension of grayscale image
 max=t(1)*t(2); % no. of pixels in image
@@ -17,33 +17,26 @@ end;
 for i=1:max
    w=y/max; % to calculate normalised histogram
 end;
-%for i=1:max
-   %wg(g(i)+1)=wg(g(i)+1)+1;
-%end;
-wg = 0;
-for i=1:256
-    wg=(i*w(i)); % calculate mg
-end;
-
-%Find value of threshold
-k=0;
-temp=0;
-p1=0;
-m=0;
-for ke=0:255
-    for l= 1:(ke+1) %calculate values of P1 and m
-        p1=p1+w(i);
-        m=m+(i*w(i));
-    end
-    temp = (((wg*p1-m)*(wg*p1-m)))/(p1(1-p1)); %calculate variance at k
-    %ToDo compare to replace maximum value of variance
-    if (temp>k)
-        k=temp;
-    end;
+stem(w); %histogram
+title('s111111dkflksjdflksd');
+q=0; r=0;   z=0; x=0;
+for i=1:1:256
+     for j=1:1:i
+         q=q+w(j);
+         z=z+(j*w(j));
+     end
+     z=z/q;
+     for j=i+1:1:256
+         r=r+w(j);
+         x=x+(j*w(j));
+     end
+     x=x/r;
+     v=(q(1-q))*((z-x));
+     
 end
 
-display(k);
-stem(w);
+
+
 
 %ToDo make zero for all values in G less than equal to 'k' and 1 greater than k
 

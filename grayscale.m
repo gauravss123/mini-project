@@ -1,4 +1,4 @@
-I = imread('/media/gaurav/LocAL/SAMPLE/luna.jpg');
+I = imread('/media/gaurav/LocAL/SAMPLE/lena.jpg');
 
 imshow(I);
 G= (.222*I(:,:,1))+(.707*I(:,:,2))+(.071*I(:,:,3));
